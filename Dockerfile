@@ -79,6 +79,10 @@ CMD [ "node" ]
 
 RUN curl -sL https://install.meteor.com/ | sh
 
+# Install Mup
+
+RUN npm i -g mup
+
 # Setup Puppeteer
 
 RUN apt-get update && apt-get install -yq libgconf-2-4
@@ -106,7 +110,7 @@ RUN chmod +x /usr/local/bin/dumb-init
 # ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 
 # Install puppeteer so it's available in the container.
-RUN npm i puppeteer
+RUN npm i -g puppeteer
 
 # Add user so we don't need --no-sandbox.
 RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
